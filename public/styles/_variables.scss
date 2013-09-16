@@ -1,0 +1,20 @@
+// Colors
+
+$primaryShade: #47c;
+
+$backgroundColor: desaturate(lighten($primaryShade, 35%), 50%);
+$borderColor: desaturate(lighten($primaryShade,10%), 50%);
+
+$linkColor: desaturate(darken($primaryShade, 20%), 20%);
+$linkHoverColor: desaturate(darken($primaryShade, 20%), 10%);
+
+$fontColor: desaturate(darken($primaryShade, 20%), 70%);
+$fontLightColor: desaturate(lighten($primaryShade, 20%), 70%);
+
+
+// Fonts
+
+@import url(http://fonts.googleapis.com/css?family=Pathway+Gothic+One|Aldrich);
+
+$titleFont: "Pathway Gothic One";
+$normalFont: Arial, Helvetica;
