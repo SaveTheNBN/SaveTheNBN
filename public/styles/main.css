@@ -1,0 +1,60 @@
+@import url(http://fonts.googleapis.com/css?family=Pathway+Gothic+One|Aldrich);
+* {
+  box-sizing: border-box; }
+
+html {
+  background-color: #dfe1e3;
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+
+body {
+  margin: 0;
+  height: 100%;
+  color: #555555;
+  font-family: Arial, Helvetica; }
+
+h1 {
+  font-family: "Pathway Gothic One";
+  margin: 5px 0; }
+
+a {
+  color: #354d75;
+  text-decoration: none; }
+  a:hover {
+    color: #2d4b7d;
+    text-decoration: underline; }
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 100%;
+  background-color: white; }
+  .page > * {
+    border-left: solid 1px #9ba0a8;
+    border-right: solid 1px #9ba0a8;
+    padding: 10px; }
+  .page > header {
+    height: 50px;
+    padding: 0 10px; }
+    .page > header h1 {
+      float: left; }
+    .page > header .menu {
+      margin-left: 200px; }
+
+.menu a {
+  line-height: 50px;
+  font-weight: bold; }
+
+.maxiWell {
+  min-height: 100px;
+  border: none;
+  background: #dfe1e3; }
+
+.contentWrapper {
+  min-height: 400px; }
+
+footer {
+  background-color: #141517;
+  color: #bbbbbb;
+  min-height: 200px; }
