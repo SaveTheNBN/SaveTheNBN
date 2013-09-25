@@ -1,60 +1,75 @@
-@import url(http://fonts.googleapis.com/css?family=Pathway+Gothic+One|Aldrich);
+@import url(http://fonts.googleapis.com/css?family=Purple+Purse);
 * {
   box-sizing: border-box; }
 
-html {
-  background-color: #dfe1e3;
-  margin: 0;
+html, body {
   padding: 0;
-  height: 100%; }
-
-body {
   margin: 0;
-  height: 100%;
-  color: #555555;
-  font-family: Arial, Helvetica; }
+  font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif; }
 
-h1 {
-  font-family: "Pathway Gothic One";
-  margin: 5px 0; }
+header {
+  text-align: center;
+  max-width: 600px;
+  margin: 20px auto;
+  border-bottom: 3px double #ccc;
+  padding: 10px 0; }
+  header h1 {
+    font-family: "Purple Purse";
+    font-size: 50px;
+    line-height: 55px;
+    color: #0d3299;
+    margin: 0;
+    padding: 0; }
+  header p {
+    color: #999; }
 
-a {
-  color: #354d75;
-  text-decoration: none; }
-  a:hover {
-    color: #2d4b7d;
-    text-decoration: underline; }
+section {
+  max-width: 600px;
+  margin: auto; }
 
-.page {
-  max-width: 1000px;
-  margin: 0 auto;
-  min-height: 100%;
-  background-color: white; }
-  .page > * {
-    border-left: solid 1px #9ba0a8;
-    border-right: solid 1px #9ba0a8;
-    padding: 10px; }
-  .page > header {
-    height: 50px;
-    padding: 0 10px; }
-    .page > header h1 {
-      float: left; }
-    .page > header .menu {
-      margin-left: 200px; }
+.member {
+  border-top: 1px solid #eee;
+  padding: 10px 0;
+  margin-bottom: 20px; }
+  .member img {
+    float: left;
+    max-width: 80px;
+    max-height: 80px; }
+  .member .details {
+    padding-left: 90px; }
+    .member .details h2 {
+      font-size: 25px;
+      line-height: 26px;
+      font-weight: normal;
+      margin: 0 0 10px 0;
+      padding: 0; }
+    .member .details .offices {
+      margin-bottom: 10px; }
+    .member .details p {
+      font-size: 14px;
+      line-height: 18px;
+      margin: 0 0 4px 0;
+      padding: 0; }
+    .member .details a {
+      color: #777;
+      text-decoration: underline; }
+      .member .details a:hover {
+        color: #0d3299; }
 
-.menu a {
-  line-height: 50px;
-  font-weight: bold; }
-
-.maxiWell {
-  min-height: 100px;
-  border: none;
-  background: #dfe1e3; }
-
-.contentWrapper {
-  min-height: 400px; }
-
-footer {
-  background-color: #141517;
-  color: #bbbbbb;
-  min-height: 200px; }
+form {
+  margin: 0;
+  margin-bottom: 40px;
+  padding: 0;
+  text-align: center; }
+  form input {
+    font-size: 16px;
+    padding: 4px 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px; }
+  form button {
+    font-size: 16px;
+    padding: 4px 10px;
+    border: 2px solid #090;
+    background: #0c0;
+    color: white;
+    border-radius: 4px; }
