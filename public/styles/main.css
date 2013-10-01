@@ -1,20 +1,65 @@
-@import url(http://fonts.googleapis.com/css?family=Purple+Purse);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -webkit-backface-visibility: hidden;
+  text-decoration: none;
+  transform-style: preserve-3d; }
+
 * {
   box-sizing: border-box; }
 
 html, body {
+  position: relative;
+  height: 100%;
   padding: 0;
   margin: 0;
   font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif; }
 
+.left-panel {
+  position: absolute;
+  border-right: 1px solid #fff;
+  padding: 40px;
+  min-height: 100%;
+  width: 575px;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: -moz-linear-gradient(left, white 0%, white 16%, rgba(255, 255, 255, 0.9) 52%, rgba(255, 255, 255, 0.4) 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, white), color-stop(16%, white), color-stop(52%, rgba(255, 255, 255, 0.9)), color-stop(100%, rgba(255, 255, 255, 0.4)));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, white 0%, white 16%, rgba(255, 255, 255, 0.9) 52%, rgba(255, 255, 255, 0.4) 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, white 0%, white 16%, rgba(255, 255, 255, 0.9) 52%, rgba(255, 255, 255, 0.4) 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, white 0%, white 16%, rgba(255, 255, 255, 0.9) 52%, rgba(255, 255, 255, 0.4) 100%);
+  /* IE10+ */
+  background: linear-gradient(to right, white 0%, white 16%, rgba(255, 255, 255, 0.9) 52%, rgba(255, 255, 255, 0.4) 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#66ffffff',GradientType=1 );
+  /* IE6-9 */ }
+
+#background-map {
+  position: fixed !important;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
 header {
-  text-align: center;
-  max-width: 600px;
   margin: 20px auto;
-  border-bottom: 3px double #ccc;
   padding: 10px 0; }
   header h1 {
-    font-family: "Purple Purse";
+    font-family: "Open Sans";
     font-size: 50px;
     line-height: 55px;
     color: #0d3299;
@@ -22,10 +67,6 @@ header {
     padding: 0; }
   header p {
     color: #999; }
-
-section {
-  max-width: 600px;
-  margin: auto; }
 
 .member {
   border-top: 1px solid #eee;
