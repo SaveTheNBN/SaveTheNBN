@@ -2,7 +2,7 @@ var Members = function ($container) {
   this._container = $container;
 
   _this = this;
-  $.get('/scripts/members.json', function (data) {
+  $.get('scripts/members.json', function (data) {
     _this._data = data;
   });
 };
