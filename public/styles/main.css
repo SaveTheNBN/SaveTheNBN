@@ -74,7 +74,7 @@ html, body {
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease; }
 
-#background-map {
+.background-map {
   position: fixed !important;
   height: 100%;
   width: 100%;
@@ -101,7 +101,8 @@ header {
   padding: 10px 0;
   margin-bottom: 20px;
   animation: appear 0.8s;
-  -webkit-animation: appear 0.8s; }
+  -webkit-animation: appear 0.8s;
+  min-height: 90px; }
   .member img {
     float: left;
     max-width: 80px;
