@@ -1,4 +1,24 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+@keyframes appear {
+  0% {
+    transform: translate3d(-500px, 0px, 0px); }
+
+  100% {
+    transform: translate3d(0px, 0px, 0px); } }
+
+@-webkit-keyframes appear {
+  0% {
+    -webkit-transform: translate3d(-500px, 0px, 0px);
+    opacity: 0; }
+
+  30% {
+    -webkit-transform: translate3d(-500px, 0px, 0px);
+    opacity: 0; }
+
+  100% {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    opacity: 1; } }
+
 * {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -14,6 +34,9 @@
 
 * {
   box-sizing: border-box; }
+
+.hidden {
+  display: none; }
 
 html, body {
   position: relative;
@@ -45,6 +68,11 @@ html, body {
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#66ffffff',GradientType=1 );
   /* IE6-9 */ }
+  .left-panel * {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease; }
 
 #background-map {
   position: fixed !important;
@@ -71,7 +99,9 @@ header {
 .member {
   border-top: 1px solid #eee;
   padding: 10px 0;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  animation: appear 0.8s;
+  -webkit-animation: appear 0.8s; }
   .member img {
     float: left;
     max-width: 80px;
@@ -96,17 +126,40 @@ header {
       text-decoration: underline; }
       .member .details a:hover {
         color: #0d3299; }
+  .member .contacts {
+    display: none; }
+
+.pre-display section, .pre-display header {
+  transform: translate3d(0px, 100px, 0px);
+  -webkit-transform: translate3d(0px, 100px, 0px); }
 
 form {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: moz-none;
+  -ms-user-select: none;
+  user-select: none;
   margin: 0;
   margin-bottom: 40px;
-  padding: 0;
-  text-align: center; }
+  text-align: left;
+  border: 1px solid #ddd;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  position: relative; }
+  form:focus {
+    box-shadow: 0px 0px 20px blue; }
   form input {
-    font-size: 16px;
+    font-size: 26px;
     padding: 4px 10px;
-    border: 2px solid #ccc;
-    border-radius: 4px; }
+    border: none;
+    outline: none;
+    color: #0d3299;
+    width: 100%;
+    background: none; }
+  form img {
+    position: absolute;
+    right: 40px;
+    top: 35px; }
   form button {
     font-size: 16px;
     padding: 4px 10px;
