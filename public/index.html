@@ -28,7 +28,8 @@
             zoomControl: true,
           scrollwheel: false,
           zoomControlOptions: {
-              style: google.maps.ZoomControlStyle.LARGE
+              style: google.maps.ZoomControlStyle.LARGE,
+              position: google.maps.ControlPosition.TOP_RIGHT
           },
           mapTypeId: google.maps.MapTypeId.ROADMAP,
         };
@@ -59,16 +60,15 @@
     <div id='background-map'>
         
     </div>
-    <div class='left-panel'>
+    <div class='left-panel pre-display'>
        <header>
         <h1>Save the NBN</h1>
         <p>Contact your local member</p>
     </header>
     <section>
         <form id="search-form">
-            Enter a postcode or suburb
-            <input type="text" id="query" />
-            <button type="submit" id="search">Search</button>
+            <input type="text" id="query" placeholder="E.g. Brisbane, 4000"/>
+            <img id="loader" class='hidden' src="images/loader-box.gif" />
         </form>
     </section>
     <section id="members">
