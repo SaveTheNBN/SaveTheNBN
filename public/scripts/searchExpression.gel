@@ -1,0 +1,30 @@
+(&&
+    [search]
+    (filter
+        [members]
+        { member
+            (||
+                (contains member.Name [search])
+                (findOne
+                    member.Office
+                    { office
+                        (||
+                            (contains office [search])
+                            (&&
+                                (!(isNaN [search]))
+                                (> (slice -4 office) (* (slice 0 1 [search]) 1000))
+                                (< (apply - (sort (array [search] (slice -4 office)){a b (- b a)})) 200)
+                            )
+                        )
+                    }
+                )
+                (findOne
+                    member.Contact
+                    { contact
+                        (contains contact [search])
+                    }
+                )
+            )
+        }
+    )
+)
