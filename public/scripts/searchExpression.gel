@@ -4,6 +4,7 @@
         [members]
         { member
             (||
+                (= "*" [search])
                 (contains member.Name [search])
                 (findOne
                     member.Office
