@@ -2,6 +2,7 @@ var gedi = require('gedi'),
     crel = require('crel'),
     membersData = require('./members.json'),
     searchExpression = require('./searchExpression.gel'),
+    initialiseMap = require('./map'),
     membersElement,
     memberElement;
 
@@ -10,7 +11,7 @@ console.log(membersData);
 var model = new gedi({members: membersData});
 
 var updateTimer = null;
-function updateResults(resultData){
+function updateResultsList(resultData){
 
     // Show loading pulser.
     $('.loader').show();
@@ -73,6 +74,7 @@ function updateSelectedMember(member){
         return;
     }
     var memberElement = crel('div', {'class':'content'},
+            crel('button', {'class':'close'}, 'X'),
             crel('h1', member.Name),
             crel('img', {src:member.Image}),
             (function(){
@@ -97,6 +99,8 @@ $(function () {
     var searchForm = $('.search-form'),
         searchBox = searchForm.find('input');
 
+    initialiseMap(model);
+
     membersElement = $('.members');
 
     searchForm.on('submit', function(event){
@@ -106,14 +110,19 @@ $(function () {
     $('.loader').hide();
 
     $('.memberDetails').on('click', function(event){
-        if(event.target === this){
+        if(event.target === this || $(event.target).is('.close')){
             model.remove('[selectedMember]');
         }
     });
 
     // update results.
     model.bind(searchExpression, function(event){
-        updateResults(event.getValue());
+        model.set('[results]', event.getValue());
+    });
+
+    // update results list.
+    model.bind('[results]', function(event){
+        updateResultsList(event.getValue());
     });
 
     // update results.
@@ -129,20 +138,3 @@ $(function () {
         }
     });
 });
-
-
-/*
-
-            // Contact details
-            (function(){
-                var contacts = crel('div', { 'class': 'contacts' });
-
-                for (i = 0; i < data.Contact.length; i++) {
-                    contacts.appendChild(crel('p',
-                        crel('a', { href: data.Contact[i] }, data.Contact[i].replace(/mailto\:/g, '').replace(/http\:\/\//g, ''))
-                    ));
-                }
-
-                return contacts;
-            }())
-*/
