@@ -9,7 +9,7 @@
   "author": "",
   "license": "BSD",
   "dependencies": {
-    "gedi": "~0.9.1",
+    "gedi": "0.9.x",
     "crel": "~1.0.0"
   }
 }
