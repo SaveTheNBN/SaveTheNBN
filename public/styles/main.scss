@@ -2,14 +2,20 @@
 
 @keyframes appear
 {
-0% {transform: translate3d(-500px, 0px, 0px); }
-100% {transform: translate3d(0px, 0px, 0px); }
+0% {
+    transform: translate3d(-500px, 0px, 0px);
+    opacity: 0;
+}
+100% {
+    transform: translate3d(0px, 0px, 0px);
+    opacity: 1;
+}
 }
 
 @-webkit-keyframes appear /* Safari and Chrome */
 {
 0% {-webkit-transform: translate3d(-500px, 0px, 0px); opacity:0}
-30% {-webkit-transform: translate3d(-500px, 0px, 0px); opacity:0}
+30% {-webkit-transform: translate3d(-300px, 0px, 0px); opacity:0}
 100% {-webkit-transform: translate3d(0px, 0px, 0px); opacity:1}
 }
 
@@ -52,7 +58,7 @@ html, body {
     border-right:1px solid #fff;
     padding:40px;
     min-height:100%;
-    width:575px;
+    max-width:500px;
     z-index: 1;
     top:0;
     left:0;
@@ -155,6 +161,16 @@ section {
     }
 }
 
+button {
+    font-size: 16px;
+    padding: 4px 10px;
+    border: 1px solid #ccc;
+    background: #eee;
+    color: #333;
+    min-height: 20px;
+    min-width: 20px;
+}
+
 form {
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -187,14 +203,6 @@ form {
         right:40px;
         top:35px;
     }
-    button {
-        font-size: 16px;
-        padding: 4px 10px;
-        border: 2px solid #090;
-        background: #0c0;
-        color: white;
-        border-radius: 4px;
-    }
 }
 
 .memberDetails{
@@ -204,16 +212,25 @@ form {
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 10%;
     z-index: 3;
+    padding-top: 10vw;
     background: rgba(0,0,0,0.5);
     .content{
+        position: relative;
         box-shadow: 0 0 30px white;
         max-width:800px;
+        margin:auto;
         background: white;
         padding:20px;
+        .close{
+            position: absolute;
+            top:20px;
+            right:20px;
+            z-index: 1;
+        }
         h1{
-            margin: 10px 0;
+            margin: 0;
+            margin-bottom: 20px;
             font-size: 30px;
         }
         img{
