@@ -6,54 +6,6 @@
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script type="text/javascript" src="scripts/application.browser.js"></script>
-    <script type="text/javascript">
-        function mapInitialize() {
-        // map styles
-        var styles = [
-          {
-            "stylers": [
-              { "saturation": -70 },
-              { "lightness":  45}
-            ]
-          }
-        ];
-
-        // map options
-        google.maps.visualRefresh = true;
-        var mapOptions = {
-          center: new google.maps.LatLng(-29.286399,131.19873),
-          zoom: 5,
-          disableDefaultUI: true,
-            zoomControl: true,
-          scrollwheel: false,
-          zoomControlOptions: {
-              style: google.maps.ZoomControlStyle.LARGE,
-              position: google.maps.ControlPosition.TOP_RIGHT
-          },
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-
-        // marker options
-        // var marker = new google.maps.Marker({
-        //     position: new google.maps.LatLng(-27.467668, 153.030105),
-        //     title:"SideLab"
-        // });
-
-        // init map
-        var map = new google.maps.Map($(".background-map")[0],
-            mapOptions);
-
-        if ($(window).width() < 767)
-        {
-          map.setCenter(new google.maps.LatLng(-29.286399,131.19873));
-          var styles = [];
-        }
-
-        // map.setOptions({styles: styles}); // map style
-        // marker.setMap(map); // add marker
-      }
-      google.maps.event.addDomListener(window, 'load', mapInitialize);
-    </script>
 </head>
 <body>
     <div class='background-map'>
