@@ -73,24 +73,61 @@ function updateSelectedMember(member){
         $('.memberDetails').fadeOut();
         return;
     }
-    var memberElement = crel('div', {'class':'content'},
+    var email,
+        socialIcons,
+        contactDetails,
+        memberElement = crel('div', {'class':'content'},
             crel('button', {'class':'close'}, 'X'),
             crel('h1', member.Name),
-            crel('img', {src:member.Image}),
-            (function(){
-                var contactDetails = crel('ul');
-
-                for(var i = 0; i < member.Contact.length; i++){
-                    contactDetails.appendChild(crel('li',
-                        crel('a',
-                            member.Contact[i]
-                        )
-                    ));
-                }
-
-                return contactDetails;
-            }())
+            crel('img', {'class':'photo', src:member.Image}),
+            crel('h2', 'Email'),
+            email = crel('a'),
+            crel('h2', 'Social'),
+            socialIcons = crel('div'),
+            crel('h2', 'Other Links'),
+            contactDetails = crel('ul')
         );
+
+        for(var i = 0; i < member.Contact.length; i++){
+            var contact = member.Contact[i],
+                parts = contact.split(':'),
+                protocole = parts[0],
+                label,
+                icon = null;
+
+            if(protocole === 'mailto'){
+                email.setAttribute('href', contact);
+                email.innerText = email.textContent = parts.pop();
+                continue;
+            }
+
+            contact = contact.split('//').pop();
+            var subParts = contact.split('.');
+            if(subParts[0] === 'www'){
+                subParts.shift();
+            }
+            label = subParts.join('.');
+
+            if(label.indexOf('twitter') === 0){
+                icon = 'https://cdn3.iconfinder.com/data/icons/free-social-icons/67/twitter_square-128.png';
+            }else if(label.indexOf('facebook') === 0){
+                icon = 'https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_square-128.png';
+            }
+
+            if(icon){
+                socialIcons.appendChild(
+                    crel('a', {href: member.Contact[i]},
+                        crel('img', {src:icon, 'class': 'icon'})
+                    )
+                );
+            }else{
+                contactDetails.appendChild(crel('li',
+                    crel('a', {href: member.Contact[i]},
+                        label
+                    )
+                ));
+            }
+        }
 
     $('.memberDetails').empty().append(memberElement).fadeIn();
 }

@@ -41,6 +41,15 @@
     box-sizing: border-box;
 }
 
+a{
+    color: $primary;
+}
+
+.icon{
+    height:30px;
+    width:30px;
+}
+
 .hidden {
     display:none;
 }
@@ -233,12 +242,20 @@ form {
             margin-bottom: 20px;
             font-size: 30px;
         }
-        img{
-            float:right;
-            margin-left: 30px;
+        .photo {
+            float: right;
+            max-height: 150px;
         }
         ul{
             overflow: hidden;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+            line-height: 30px;
+            .icon{
+                vertical-align: middle;
+            }
         }
     }
 }

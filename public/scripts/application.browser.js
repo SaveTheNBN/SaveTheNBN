@@ -74,24 +74,61 @@ function updateSelectedMember(member){
         $('.memberDetails').fadeOut();
         return;
     }
-    var memberElement = crel('div', {'class':'content'},
+    var email,
+        socialIcons,
+        contactDetails,
+        memberElement = crel('div', {'class':'content'},
             crel('button', {'class':'close'}, 'X'),
             crel('h1', member.Name),
-            crel('img', {src:member.Image}),
-            (function(){
-                var contactDetails = crel('ul');
-
-                for(var i = 0; i < member.Contact.length; i++){
-                    contactDetails.appendChild(crel('li',
-                        crel('a',
-                            member.Contact[i]
-                        )
-                    ));
-                }
-
-                return contactDetails;
-            }())
+            crel('img', {'class':'photo', src:member.Image}),
+            crel('h2', 'Email'),
+            email = crel('a'),
+            crel('h2', 'Social'),
+            socialIcons = crel('div'),
+            crel('h2', 'Other Links'),
+            contactDetails = crel('ul')
         );
+
+        for(var i = 0; i < member.Contact.length; i++){
+            var contact = member.Contact[i],
+                parts = contact.split(':'),
+                protocole = parts[0],
+                label,
+                icon = null;
+
+            if(protocole === 'mailto'){
+                email.setAttribute('href', contact);
+                email.innerText = email.textContent = parts.pop();
+                continue;
+            }
+
+            contact = contact.split('//').pop();
+            var subParts = contact.split('.');
+            if(subParts[0] === 'www'){
+                subParts.shift();
+            }
+            label = subParts.join('.');
+
+            if(label.indexOf('twitter') === 0){
+                icon = 'https://cdn3.iconfinder.com/data/icons/free-social-icons/67/twitter_square-128.png';
+            }else if(label.indexOf('facebook') === 0){
+                icon = 'https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_square-128.png';
+            }
+
+            if(icon){
+                socialIcons.appendChild(
+                    crel('a', {href: member.Contact[i]},
+                        crel('img', {src:icon, 'class': 'icon'})
+                    )
+                );
+            }else{
+                contactDetails.appendChild(crel('li',
+                    crel('a', {href: member.Contact[i]},
+                        label
+                    )
+                ));
+            }
+        }
 
     $('.memberDetails').empty().append(memberElement).fadeIn();
 }
@@ -1428,7 +1465,7 @@ function newGedi(model) {
 }
 
 module.exports = gediConstructor;
-},{"./pathToken":7,"weakmap":8,"gedi-paths":9,"gel-js":10,"spec-js":11}],8:[function(require,module,exports){
+},{"./pathToken":7,"weakmap":8,"gedi-paths":9,"spec-js":10,"gel-js":11}],8:[function(require,module,exports){
 (function(){/* (The MIT License)
  *
  * Copyright (c) 2012 Brandon Benvie <http://bbenvie.com>
@@ -1671,7 +1708,7 @@ void function(global, undefined_, undefined){
 }((0, eval)('this'));
 
 })()
-},{}],11:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 Object.create = Object.create || function (o) {
     if (arguments.length > 1) {
         throw new Error('Object.create implementation only accepts the first parameter.');
@@ -1737,7 +1774,7 @@ module.exports = function(get, model){
 
     return PathToken;
 }
-},{"gedi-paths/detectPath":12,"lang-js":13,"spec-js":11,"gedi-paths":9}],9:[function(require,module,exports){
+},{"gedi-paths/detectPath":12,"lang-js":13,"gedi-paths":9,"spec-js":10}],9:[function(require,module,exports){
 var detectPath = require('./detectPath');
 
 var pathSeparator = "/",
@@ -1964,7 +2001,7 @@ module.exports = {
         wildcard: pathWildcard
     }
 };
-},{"./detectPath":12}],10:[function(require,module,exports){
+},{"./detectPath":12}],11:[function(require,module,exports){
 var Lang = require('lang-js'),
     paths = require('gedi-paths'),
     createNestingParser = Lang.createNestingParser,
@@ -3067,7 +3104,7 @@ Gel = function(){
 Gel.Token = Token;
 Gel.Scope = Scope;
 module.exports = Gel;
-},{"lang-js":13,"spec-js":11,"gedi-paths":9}],12:[function(require,module,exports){
+},{"lang-js":13,"gedi-paths":9,"spec-js":10}],12:[function(require,module,exports){
 module.exports = function detectPath(substring){
     if (substring.charAt(0) === '[') {
         var index = 1;
